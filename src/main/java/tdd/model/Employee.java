@@ -38,4 +38,8 @@ public class Employee {
         this.dataAdmissao = dataAdmissao;
         this.salario = salario;
     }
+
+    public void readjustmentSalary(BigDecimal readjustment) {
+        this.salario = this.salario.add(readjustment).setScale(2);
+    }
 }
