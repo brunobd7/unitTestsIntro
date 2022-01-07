@@ -15,11 +15,20 @@ class BonusServiceTest {
     public void bonusItShouldZeroToEmployeesDoHaveHighSalary(){
 
         BonusService  bonusService = new BonusService();
-        Employee employee = new Employee("Bruno", LocalDate.now(),new BigDecimal("11000"));
-
-        BigDecimal totalBonus = bonusService.calculateSalary(employee);
-
-        assertEquals(BigDecimal.ZERO, totalBonus);
+        assertThrows(IllegalArgumentException.class,
+                () -> bonusService.calculateSalary(new Employee("Bruno", LocalDate.now(),new BigDecimal("11000")))
+        );
+//
+//        /**OPCAO 2 COM CAPTURA DA EXCEPTION COM TRY CACTH FALHANDO CASO NAO RETORNE NENHUMA EXCECAO QUE ERA ESPERADA*/
+//        try {
+//            bonusService.calculateSalary(new Employee("Bruno", LocalDate.now(),new BigDecimal("11000")));
+//            fail("NAO CAPTUROU A EXECAO EXPERADA NESSE CENARIO");
+//        }catch (Exception e){
+//
+//            /**OPCAO 3 VALIDANDO SE A EXCEPTION CAPTURADA CONDIZ COM O ESPERADO NO CENARIO*/
+//            //assertEquals("Employee with salary hightest to limit for received bonus values!",e.getMessage());
+//
+//        }
     }
 
 
